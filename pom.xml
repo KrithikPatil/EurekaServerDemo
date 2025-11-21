@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>eureka-demo-parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>discovery-server</module>
+        <module>service-a</module>
+        <module>service-b</module>
+    </modules>
+
+    <!-- Spring Boot parent -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.7</version>   <!-- your current Boot version from the logs -->
+        <relativePath/>            <!-- important -->
+    </parent>
+
+    <properties>
+        <java.version>17</java.version>
+
+        <!-- DEFINE THIS PROPERTY so Maven can replace it -->
+        <spring.cloud.version>2025.0.0</spring.cloud.version>
+        <!-- 2025.0.0 is the Spring Cloud release train compatible with Boot 3.5.x :contentReference[oaicite:0]{index=0} -->
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

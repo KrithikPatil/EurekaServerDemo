@@ -1,0 +1,17 @@
+server:
+  port: 0       # random port, so you can start multiple instances
+
+spring:
+  application:
+    name: service-b
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    registry-fetch-interval-seconds: 30
+
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
